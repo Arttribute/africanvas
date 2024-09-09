@@ -1,4 +1,3 @@
-import Image from "next/image";
 import AppBar from "@/components/layout/AppBar";
 
 export default function Home() {
