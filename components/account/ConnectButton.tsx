@@ -20,13 +20,10 @@ const ConnectButton = ({ action, setAccount, buttonVariant }: Props) => {
 
   const postConnect = async (account: string, email?: string) => {
     try {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/users`,
-        {
-          web3Address: account,
-          email,
-        }
-      );
+      const res = await axios.post(`/api/users`, {
+        web3Address: account,
+        email,
+      });
 
       if (res.status === 200 || res.status === 201) {
         console.log("Connected to server");
