@@ -183,7 +183,7 @@ export default function DescribeCommission() {
           <p className="text-sm text-gray-400 mt-2 mb-2">
             Set the amount you are willing to pay for the commission.
           </p>
-          <div className="fjustify-center my-2 bg-purple-100 p-4 rounded-2xl">
+          <div className="fjustify-center my-2 bg-purple-300 p-4 rounded-2xl">
             <div className="flex justify-between">
               <p className="text-sm font-bold text-purple-800">500$</p>
               <p className="text-sm font-bold text-purple-800">1000$</p>
@@ -195,9 +195,10 @@ export default function DescribeCommission() {
               className={cn(" bg-blue-200")}
             />
           </div>
-          <Button className="w-full mt-3 bg-purple-600">
+          <Button className="w-34 mt-3 bg-purple-600">
             Submit Commission
           </Button>
+
         </div>
       </div>
     </div>
