@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CSSProperties } from "react";
 
 interface LogoProps {
   text: string;
@@ -11,7 +12,7 @@ export function Logo({ text }: LogoProps) {
     >
       <div className="flex">
         <LogoSVG />
-        <div className="ml-1 m-1">{text}</div>
+        <div className="ml-1 m-1 text-white">{text}</div>
       </div>
     </Link>
   );
