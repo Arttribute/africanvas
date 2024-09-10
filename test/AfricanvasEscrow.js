@@ -1,17 +1,17 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("ArtcanvasEscrow Contract", function () {
-  let ArtcanvasEscrow, artcanvasEscrow;
+describe("AfricanvasEscrow Contract", function () {
+  let AfricanvasEscrow, africanvasEscrow;
   let client, artist, otherAccount;
 
   beforeEach(async function () {
     // Get the ContractFactory and Signers here.
-    ArtcanvasEscrow = await ethers.getContractFactory("ArtcanvasEscrow");
+    AfricanvasEscrow = await ethers.getContractFactory("AfricanvasEscrow");
     [client, artist, otherAccount] = await ethers.getSigners();
 
     // Deploy a new contract for each test
-    artcanvasEscrow = await ArtcanvasEscrow.deploy();
+    africanvasEscrow = await AfricanvasEscrow.deploy();
   });
 
   it("should allow a client to request a commission", async function () {
@@ -20,13 +20,13 @@ describe("ArtcanvasEscrow Contract", function () {
 
     // Client requests a commission
     await expect(
-      artcanvasEscrow
+      africanvasEscrow
         .connect(client)
         .requestCommission(description, price, { value: price })
-    ).to.emit(artcanvasEscrow, "CommissionRequested");
+    ).to.emit(africanvasEscrow, "CommissionRequested");
 
     // Verify commission details
-    const commission = await artcanvasEscrow.getCommission(1);
+    const commission = await africanvasEscrow.getCommission(1);
     expect(commission.client).to.equal(client.address);
     expect(commission.price).to.equal(price);
     expect(commission.description).to.equal(description);
@@ -38,17 +38,17 @@ describe("ArtcanvasEscrow Contract", function () {
     const price = ethers.parseEther("1");
 
     // Client requests a commission
-    await artcanvasEscrow
+    await africanvasEscrow
       .connect(client)
       .requestCommission(description, price, { value: price });
 
     // Artist accepts the commission
-    await expect(artcanvasEscrow.connect(artist).acceptCommission(1))
-      .to.emit(artcanvasEscrow, "CommissionAccepted")
+    await expect(africanvasEscrow.connect(artist).acceptCommission(1))
+      .to.emit(africanvasEscrow, "CommissionAccepted")
       .withArgs(1, artist.address);
 
     // Verify commission details
-    const commission = await artcanvasEscrow.getCommission(1);
+    const commission = await africanvasEscrow.getCommission(1);
     expect(commission.artist).to.equal(artist.address);
     expect(commission.status).to.equal("Accepted");
   });
@@ -59,20 +59,20 @@ describe("ArtcanvasEscrow Contract", function () {
     const artworkHash = "QmSomeArtworkHash"; // Mock IPFS hash
 
     // Client requests and artist accepts the commission
-    await artcanvasEscrow
+    await africanvasEscrow
       .connect(client)
       .requestCommission(description, price, { value: price });
-    await artcanvasEscrow.connect(artist).acceptCommission(1);
+    await africanvasEscrow.connect(artist).acceptCommission(1);
 
     // Artist completes the commission
     await expect(
-      artcanvasEscrow.connect(artist).completeCommission(1, artworkHash)
+      africanvasEscrow.connect(artist).completeCommission(1, artworkHash)
     )
-      .to.emit(artcanvasEscrow, "CommissionCompleted")
+      .to.emit(africanvasEscrow, "CommissionCompleted")
       .withArgs(1, artworkHash);
 
     // Verify commission details
-    const commission = await artcanvasEscrow.getCommission(1);
+    const commission = await africanvasEscrow.getCommission(1);
     expect(commission.status).to.equal("Completed");
     expect(commission.artworkHash).to.equal(artworkHash);
   });
@@ -83,22 +83,22 @@ describe("ArtcanvasEscrow Contract", function () {
     const artworkHash = "QmSomeArtworkHash"; // Mock IPFS hash
 
     // Client requests and artist accepts and completes the commission
-    await artcanvasEscrow
+    await africanvasEscrow
       .connect(client)
       .requestCommission(description, price, { value: price });
-    await artcanvasEscrow.connect(artist).acceptCommission(1);
-    await artcanvasEscrow.connect(artist).completeCommission(1, artworkHash);
+    await africanvasEscrow.connect(artist).acceptCommission(1);
+    await africanvasEscrow.connect(artist).completeCommission(1, artworkHash);
 
     // Check initial balance of artist
     const initialBalance = await ethers.provider.getBalance(artist.address);
 
     // Client approves the commission
-    await expect(artcanvasEscrow.connect(client).approveCommission(1))
-      .to.emit(artcanvasEscrow, "CommissionApproved")
+    await expect(africanvasEscrow.connect(client).approveCommission(1))
+      .to.emit(africanvasEscrow, "CommissionApproved")
       .withArgs(1);
 
     // Verify commission status
-    const commission = await artcanvasEscrow.getCommission(1);
+    const commission = await africanvasEscrow.getCommission(1);
     expect(commission.status).to.equal("Approved");
 
     // Check final balance of artist
@@ -112,15 +112,15 @@ describe("ArtcanvasEscrow Contract", function () {
     const artworkHash = "QmSomeArtworkHash";
 
     // Client requests, artist accepts and completes the commission
-    await artcanvasEscrow
+    await africanvasEscrow
       .connect(client)
       .requestCommission(description, price, { value: price });
-    await artcanvasEscrow.connect(artist).acceptCommission(1);
-    await artcanvasEscrow.connect(artist).completeCommission(1, artworkHash);
+    await africanvasEscrow.connect(artist).acceptCommission(1);
+    await africanvasEscrow.connect(artist).completeCommission(1, artworkHash);
 
     // Try approving with a different account
     await expect(
-      artcanvasEscrow.connect(otherAccount).approveCommission(1)
+      africanvasEscrow.connect(otherAccount).approveCommission(1)
     ).to.be.revertedWith("Only the client can approve the commission.");
   });
 });
