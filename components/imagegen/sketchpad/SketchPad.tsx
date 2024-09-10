@@ -6,14 +6,12 @@ import DrawingCanvas from "@/components/imagegen/sketchpad/DrawingCanvas";
 import axios from "axios";
 
 interface SketchPadProps {
-  onSubmit: () => void; // Callback function to handle submission
+  onSubmit: (imageUrl?: string) => void; // Callback function to handle submission
   setReferenceImageUrl: (url: string) => void;
-  description: string;
-  setDescription: (description: string) => void;
 }
 
 const SketchPad = forwardRef<HTMLCanvasElement, SketchPadProps>(
-  ({ onSubmit, setReferenceImageUrl, description, setDescription }, ref) => {
+  ({ onSubmit, setReferenceImageUrl }, ref) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     // Handle the submission of the drawing
@@ -50,7 +48,7 @@ const SketchPad = forwardRef<HTMLCanvasElement, SketchPadProps>(
                 console.log("Uploaded image data:", res.data);
                 const imageUrl = res.data.secure_url;
                 setReferenceImageUrl(imageUrl); // Set the uploaded image URL
-                onSubmit(); // Pass the image data to the callback
+                onSubmit(imageUrl); // Pass the image data to the callback
               }
             }, "image/png");
           }
@@ -62,12 +60,7 @@ const SketchPad = forwardRef<HTMLCanvasElement, SketchPadProps>(
       <div className="h-96 w-96 m-2">
         <DrawingCanvas ref={canvasRef} />
         <div className="w-full mt-20">
-          <Input
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description"
-          />
-          <Button className="w-full mt-3" onClick={handleSubmit}>
+          <Button className="w-full mt-3 bg-purple-600" onClick={handleSubmit}>
             Submit Drawing
           </Button>
         </div>
