@@ -19,10 +19,14 @@ Completion and Payment: Upon completion, the payment is released to the artist. 
 ## Built with Cutting-Edge Technology:
 
 Africanvas combines the latest in web development, AI, and blockchain:
-Next.js for a dynamic and user-friendly interface.
-MongoDB for secure and scalable data management.
-Solidity Smart Contracts deployed on Base and Optimism for secure transactions.
-Astria Stable Diffusion API for AI-powered image generation.
+
+**Next.js** for a dynamic and user-friendly interface.
+
+**MongoDB** for secure and scalable data management.
+
+**Solidity** Smart Contracts deployed on Base and Optimism for secure transactions.
+
+**Astria Stable Diffusion API** for AI-powered image generation.
 
 ## Smart Contracts
 
