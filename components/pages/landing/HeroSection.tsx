@@ -17,25 +17,25 @@ export default function HeroSection() {
       </div>
       <div className="flex flex-col items-start lg:w-1/2 space-y-6 mt-8 lg:mt-0 lg:ml-12">
         <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight">
-          Your new
+          Your trusted
           <br />
-          commission Platform
+          Art commission Platform
         </h1>
         <p className="text-lg lg:text-xl text-gray-300">
-          Try out our new AI-powered art generator. Just sketch, describe, or upload and generate art from your favorite creators' AI model.
+        Use AI to convey your vision to artists. Generate AI art to guide the artist, who will then craft the final piece based on your concept.
         </p>
         <div className="flex space-x-8">
           <div className="text-center">
             <h2 className="text-3xl lg:text-5xl font-bold">999,000</h2>
-            <p className="text-sm lg:text-base text-gray-400">Digital art file</p>
+            <p className="text-sm lg:text-base text-gray-400">Digital art files</p>
           </div>
           <div className="text-center">
             <h2 className="text-3xl lg:text-5xl font-bold">2,000</h2>
-            <p className="text-sm lg:text-base text-gray-400">Art Seller</p>
+            <p className="text-sm lg:text-base text-gray-400">Art Sellers</p>
           </div>
           <div className="text-center">
             <h2 className="text-3xl lg:text-5xl font-bold">10,000</h2>
-            <p className="text-sm lg:text-base text-gray-400">Buyer</p>
+            <p className="text-sm lg:text-base text-gray-400">Buyers</p>
           </div>
         </div>
       </div>

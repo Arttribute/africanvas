@@ -20,19 +20,19 @@ export default function GetStartedSection() {
         <h2 className="text-3xl font-extrabold text-white mb-12">Get Started In 3 Steps</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <StepCard
-            icon={<FaUpload color="#7C3AED" size={48} />}  // Apply color and size directly
-            title="Upload your best art"
-            description="Start the upload by creating an account"
+            icon={<FaUpload color="#7C3AED" size={48} />}  
+            title="Upload Your Portfolio"
+            description="Create an account and showcase your art portfolio."
           />
           <StepCard
-            icon={<FaClipboardList color="#10B981" size={48} />} // Apply color and size directly
-            title="Fill out the product info"
-            description="Fill out the required information and pricing and you are set"
+            icon={<FaClipboardList color="#10B981" size={48} />} 
+            title="Set Up Commission Options"
+            description="Provide details on your services, pricing, and availability for custom commissions."
           />
           <StepCard
-            icon={<FaTag color="#EF4444" size={48} />} // Apply color and size directly
-            title="Start Selling & Growing"
-            description="Choose between auctions, fixed-price listings, and declining-price listings. You choose how you want to sell your NFTs!"
+            icon={<FaTag color="#EF4444" size={48} />} 
+            title="Receive AI-Assisted Requests"
+            description="Clients use AI to visualize their ideas. You'll receive these AI-generated concepts to create final custom artwork."
           />
         </div>
       </div>
