@@ -6,7 +6,7 @@ import DrawingCanvas from "@/components/imagegen/sketchpad/DrawingCanvas";
 import axios from "axios";
 
 interface SketchPadProps {
-  onSubmit: () => void; // Callback function to handle submission
+  onSubmit: (imageUrl?: string) => void; // Callback function to handle submission
   setReferenceImageUrl: (url: string) => void;
   description: string;
   setDescription: (description: string) => void;
@@ -50,7 +50,7 @@ const SketchPad = forwardRef<HTMLCanvasElement, SketchPadProps>(
                 console.log("Uploaded image data:", res.data);
                 const imageUrl = res.data.secure_url;
                 setReferenceImageUrl(imageUrl); // Set the uploaded image URL
-                onSubmit(); // Pass the image data to the callback
+                onSubmit(imageUrl); // Pass the image data to the callback
               }
             }, "image/png");
           }

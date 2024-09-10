@@ -16,17 +16,18 @@ export default function DescribeCommission() {
   const [inputType, setInputType] = useState("reference");
   const [referenceImageUrl, setReferenceImageUrl] = useState("");
 
-  async function generateImage() {
+  async function generateImage(imageUrl?: string) {
     console.log("image prompt", description);
 
     try {
       setLoadingImages(true);
       let promptToken = "sks style"; //TODO: replace with this `${tunedModel.modeldata.token} style` || "sks style";
-      console.log("Reference Image URL", referenceImageUrl);
+      console.log("imageUrl", imageUrl);
+      const referenceImage = imageUrl || referenceImageUrl;
       const controlnetData =
-        referenceImageUrl !== ""
+        referenceImage !== ""
           ? {
-              input_image_url: referenceImageUrl,
+              input_image_url: referenceImage,
               controlnet: "depth",
               denoising_strength: 1,
               controlnet_txt2img: false,
