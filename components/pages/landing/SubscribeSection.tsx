@@ -15,10 +15,10 @@ export default function SubscribeSection() {
         {/* Subscribe Form */}
         <div className="flex flex-col justify-center">
           <h2 className="text-3xl font-extrabold text-white mb-4">
-            Subscribe To Get Fresh News And Updates About Digital Art
+          Stay Updated with AfriCanvas
           </h2>
           <p className="text-gray-400 mb-8">
-            The World's Largest Digital Marketplace for digital art and 3D assets
+          Join our platform where artists turn AI-generated concepts into unique, commissioned art pieces. Subscribe for the latest news and opportunities.
           </p>
           <div className="flex max-w-lg">
             <input
