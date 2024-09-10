@@ -31,15 +31,16 @@ const Footer: React.FC<FooterProps> = ({
             <h2 className="text-2xl font-bold text-white">AfriCanvas</h2>
             <p className="mt-4 text-gray-400">{emailSubscriptionText}</p>
             <div className="mt-6 flex space-x-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-400 hover:text-white"
-                >
-                  {link.icon}
-                </a>
-              ))}
+              {socialLinks &&
+                socialLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-gray-400 hover:text-white"
+                  >
+                    {link.icon}
+                  </a>
+                ))}
             </div>
             <div className="mt-6 relative max-w-md">
               <input
@@ -54,25 +55,26 @@ const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex flex-wrap justify-between md:space-x-16 space-y-8 md:space-y-0 md:flex-nowrap">
-            {sections.map((section) => (
-              <div key={section.title} className="text-sm">
-                <h3 className="text-lg font-semibold text-white">
-                  {section.title}
-                </h3>
-                <ul className="mt-4 space-y-2">
-                  {section.links.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-white"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {sections &&
+              sections.map((section) => (
+                <div key={section.title} className="text-sm">
+                  <h3 className="text-lg font-semibold text-white">
+                    {section.title}
+                  </h3>
+                  <ul className="mt-4 space-y-2">
+                    {section.links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          className="text-gray-400 hover:text-white"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
           </div>
         </div>
 
