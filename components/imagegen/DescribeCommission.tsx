@@ -193,13 +193,9 @@ export default function DescribeCommission() {
               max={100}
               step={1}
               className={cn(" bg-blue-200")}
-              onChange={(event) => setDesiredPrice(Number(event.target.value))}
             />
           </div>
-          <Button
-            className="w-full mt-3 bg-purple-600"
-            onClick={() => generateImage()}
-          >
+          <Button className="w-full mt-3 bg-purple-600">
             Submit Commission
           </Button>
         </div>
