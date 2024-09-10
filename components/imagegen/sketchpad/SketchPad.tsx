@@ -61,7 +61,7 @@ const SketchPad = forwardRef<HTMLCanvasElement, SketchPadProps>(
         <DrawingCanvas ref={canvasRef} />
         <div className="w-full mt-20">
           <Button className="w-full mt-3 bg-purple-600" onClick={handleSubmit}>
-            Submit Drawing
+            Visualize description
           </Button>
         </div>
       </div>

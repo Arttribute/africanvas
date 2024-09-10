@@ -9,9 +9,9 @@ export default function AppBar() {
       <Menubar className="rounded-none border-none px-2 lg:px-4">
         <MenubarMenu>
           <div className=" lg:hidden"></div>
-            <MenubarTrigger>
-            <Logo text="AfriCanvas" />
-            </MenubarTrigger>
+          <MenubarTrigger>
+            <p className="text-white text-xl font-bold"> Africanvas </p>
+          </MenubarTrigger>
         </MenubarMenu>
         <div className="grow" />
         <section className="my-12 mx-6 ">

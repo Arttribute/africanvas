@@ -8,10 +8,10 @@ export default function Home() {
     <div>
       <AppBar />
       <div className="relative flex flex-col items-center justify-center w-full py-16 bg-gradient-to-r from-purple-900 via-black to-black text-white">
-      <DescribeCommission />
+        <DescribeCommission />
       </div>
       <div>
-        <SubscribeSection/>
+        <SubscribeSection />
       </div>
     </div>
   );

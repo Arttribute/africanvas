@@ -9,6 +9,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
+import { useMagicContext } from "../providers/MagicProvider";
+import { AfricanvasescrowABI } from "@/lib/abis/AfricanvasescrowABI";
+import { ethers } from "ethers";
 import axios from "axios";
 
 export default function DescribeCommission() {
@@ -20,6 +23,8 @@ export default function DescribeCommission() {
   const [inputType, setInputType] = useState("reference");
   const [referenceImageUrl, setReferenceImageUrl] = useState("");
   const [desiredPrice, setDesiredPrice] = useState(500);
+
+  const { web3 } = useMagicContext();
 
   async function generateImage(imageUrl?: string) {
     console.log("image prompt", description);
@@ -82,6 +87,22 @@ export default function DescribeCommission() {
     }
   }
 
+  async function createComission() {
+    const EscrowAddress = "0x92B9AaC41F5e53A693109d92652a1E41EC939e0E";
+    const price = ethers.parseEther("0.0003");
+
+    const fromAddress = (await web3.eth.getAccounts())[0];
+
+    const contract = new web3.eth.Contract(AfricanvasescrowABI, EscrowAddress);
+
+    const receipt = await contract.methods
+      .requestCommission(description, price, price)
+      .send({
+        from: fromAddress,
+      });
+    console.log("receipt", receipt);
+  }
+
   useEffect(() => {
     if (promptId) {
       getGeneratedImages();
@@ -89,7 +110,7 @@ export default function DescribeCommission() {
   }, [promptId]);
 
   return (
-    <div className="flex mt-16 items-center justify-center">
+    <div className="flex mt-4 items-center justify-center mb-12">
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-4 m-4">
           <div className="m-2">
@@ -148,7 +169,7 @@ export default function DescribeCommission() {
           {inputType !== "sketchpad" && !loadingImages && !loadedImages && (
             <div className="flex flex-col justify-center w-96 m-2">
               <Button
-                className="w-full mt-3 bg-purple-600"
+                className="w-full mt-3 bg-indigo-600"
                 onClick={() => generateImage()}
               >
                 Visualize Description
@@ -166,8 +187,8 @@ export default function DescribeCommission() {
               className="rounded-full aspect-[1/1] m-2"
             />
             <div className="ml-4 w-96">
-              <p className="text-4xl font-bold text-white">Artist Name</p>
-              <p className="text-sm text-gray-400">very brief artist bio</p>
+              <p className="text-4xl font-bold text-white">Bashy Art</p>
+              <p className="text-sm text-gray-400">My very brief artist bio</p>
             </div>
           </div>
           <p className="text-sm text-gray-400 mt-2 mb-2">
@@ -185,8 +206,8 @@ export default function DescribeCommission() {
           </p>
           <div className="fjustify-center my-2 bg-purple-300 p-4 rounded-2xl">
             <div className="flex justify-between">
-              <p className="text-sm font-bold text-purple-800">500$</p>
-              <p className="text-sm font-bold text-purple-800">1000$</p>
+              <p className="text-sm font-bold text-purple-800">0.001 ETH</p>
+              <p className="text-sm font-bold text-purple-800">0.010 ETH</p>
             </div>
             <Slider
               defaultValue={[50]}
@@ -195,10 +216,12 @@ export default function DescribeCommission() {
               className={cn(" bg-blue-200")}
             />
           </div>
-          <Button className="w-34 mt-3 bg-purple-600">
+          <Button
+            className="w-34 mt-3 bg-purple-600 w-full"
+            onClick={createComission}
+          >
             Submit Commission
           </Button>
-
         </div>
       </div>
     </div>

@@ -32,13 +32,13 @@ const ToolBar: React.FC<ToolBarProps> = ({
           marginBottom: "10px",
         }}
       >
-        <div className="flex rounded-2xl p-1 m-2 bg-purple-400 border-2">
+        <div className="flex rounded-2xl p-1 m-2 bg-purple-500 border-2">
           <div className="flex items-center p-1">
             <input
               type="color"
               value={selectedColor}
               onChange={(e) => setSelectedColor(e.target.value)}
-              className=" w-7 h-8 bg-purple-400"
+              className=" w-7 h-8 bg-purple-500"
               style={{ borderRadius: "100%", border: "none" }}
             />
           </div>

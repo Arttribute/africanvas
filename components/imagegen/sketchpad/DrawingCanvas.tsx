@@ -201,7 +201,7 @@ const DrawingCanvas = React.forwardRef<HTMLCanvasElement, DrawingCanvasProps>(
 
     return (
       <div className="relative w-full h-full">
-        <div className="-mb-3">
+        <div className="-mb-12">
           <ToolBar
             handleDraw={handleDraw}
             handleErase={handleErase}

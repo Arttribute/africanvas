@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Chakra_Petch } from "next/font/google";
+import { Chakra_Petch, Inter } from "next/font/google";
 import "./globals.css";
 import MagicProvider from "@/components/providers/MagicProvider";
 import MinipayProvider from "@/components/providers/MinipayProvider";
 
 const chakra_petch = Chakra_Petch({
+  weight: ["300", "400", "500", "600"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["Helvetica", "Arial", "sans-serif"],
+});
+
+const inter = Inter({
   weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
@@ -23,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={chakra_petch.className}>
+      <body className={inter.className}>
         <MagicProvider>
           <MinipayProvider> {children}</MinipayProvider>
         </MagicProvider>
