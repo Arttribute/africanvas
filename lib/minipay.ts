@@ -71,19 +71,19 @@ export const checkBalance = async (
   token: Token,
   isTestnet = true
 ) => {
-  let StableTokenContract = getContract({
+  const StableTokenContract = getContract({
     abi: stableTokenABI,
     address: getStableTokenAddress(token, isTestnet),
     client: testnetPublicClient,
   });
 
-  let balanceInBigNumber = await StableTokenContract.read.balanceOf([
+  const balanceInBigNumber = await StableTokenContract.read.balanceOf([
     address as `0x${string}`,
   ]);
 
-  let balanceInWei = balanceInBigNumber;
+  const balanceInWei = balanceInBigNumber;
 
-  let balanceInEthers = formatEther(balanceInWei);
+  const balanceInEthers = formatEther(balanceInWei);
 
   return balanceInEthers;
 };
@@ -139,7 +139,7 @@ export const requestTransfer = async (
   //   .then((res) => res.json())
   //   .then((res) => JSON.parse(res.result));
 
-  let hash = await client.sendTransaction({
+  const hash = await client.sendTransaction({
     account: transactionBody.account,
     to: transactionBody.to,
     value: transactionBody.value,
