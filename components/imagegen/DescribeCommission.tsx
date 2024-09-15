@@ -31,7 +31,7 @@ export default function DescribeCommission() {
 
     try {
       setLoadingImages(true);
-      let promptToken = "sks style"; //TODO: replace with this `${tunedModel.modeldata.token} style` || "sks style";
+      const promptToken = "sks style"; //TODO: replace with this `${tunedModel.modeldata.token} style` || "sks style";
       console.log("imageUrl", imageUrl);
       const referenceImage = imageUrl || referenceImageUrl;
       const controlnetData =
