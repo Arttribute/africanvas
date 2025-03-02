@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col lg:flex-row items-center justify-between px-8 py-16 lg:px-24 lg:py-32 bg-gradient-to-r from-purple-900 via-black to-black text-white">
+    <section className="relative flex flex-col lg:flex-row items-center justify-between px-8 py-16 lg:px-24 lg:py-32 bg-gradient-to-r from-purple-950 via-black to-black text-white">
       <div className="flex flex-row lg:w-1/2">
         <img
           src="/assets/Frame1.png"

@@ -1,4 +1,4 @@
-import Index from '../components/pages/landing/Index';
+import Index from '../components/pages/landing/index';
 
 export default function Home() {
   return (

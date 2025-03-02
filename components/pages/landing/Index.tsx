@@ -7,6 +7,8 @@ import SalesSection from './SalesSection';
 import CreatorSection from './CreatorSection';
 import GetStartedSection from './GetStarted';
 import SubscribeSection from './SubscribeSection';
+import FeaturedSection from './FeaturedSection';
+import CategoriesSection from './CategorySection';
 
 const Index = () => {
   return (
@@ -16,6 +18,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <SalesSection />
+        <FeaturedSection />
+        <CategoriesSection />
         <CreatorSection />
         <GetStartedSection />
         <SubscribeSection />
